@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:whatsapp_clone/presentation/widgets/contact_list.dart';
 
+import '../../widgets/chat_app_bar.dart';
+import '../../widgets/contact_list.dart';
+import '../../widgets/inactive_web_state_widget.dart';
 import '../../widgets/web_profile_bar.dart';
 import '../../widgets/web_search_bar.dart';
 
-class WebScreenLayout extends StatelessWidget {
+/* class WebScreenLayout extends StatelessWidget {
   const WebScreenLayout({super.key});
 
   @override
@@ -15,10 +16,10 @@ class WebScreenLayout extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
           Flexible(
-            child: Container(
+            child: SizedBox(
               width: MediaQuery.of(context).size.width * 0.25,
               child: Column(
-                children: [
+                children: const [
                   // web profile bar
                   WebProfileBar(),
                   // web search bar
@@ -28,7 +29,7 @@ class WebScreenLayout extends StatelessWidget {
               ),
             ),
           ),
-          // we screen
+          // web screen
           Container(
             width: MediaQuery.of(context).size.width * 0.75,
             decoration: const BoxDecoration(
@@ -38,40 +39,79 @@ class WebScreenLayout extends StatelessWidget {
               ),
             ),
             // alignment: Alignment.center,
-            child: Center(
+            child: const InactiveWebStateWidget(),
+          ),
+        ],
+      ),
+    );
+  }
+} */
+
+class WebScreenLayout extends StatefulWidget {
+  const WebScreenLayout({super.key});
+
+  @override
+  State<WebScreenLayout> createState() => _WebScreenLayoutState();
+}
+
+class _WebScreenLayoutState extends State<WebScreenLayout> {
+  bool _hasClickedOnChat = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Row(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          Flexible(
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width * 0.25,
               child: Column(
-                mainAxisSize: MainAxisSize.min,
                 children: [
-                  SvgPicture.asset(
-                    'whatsapp.svg',
-                    height: 200,
-                    width: 400,
-                  ),
-                  const SizedBox(height: 30),
-                  const Text(
-                    'WhatsApp Web',
-                    style: TextStyle(
-                      fontSize: 40,
-                      color: Colors.white60,
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  const Text(
-                    'Send and receive messages without keeping your phone online.',
-                    style: TextStyle(
-                      color: Colors.white54,
-                    ),
-                  ),
-                  const SizedBox(height: 5),
-                  const Text(
-                    'Use WhatsApp on up to 4 linked devices and 1 phone at the same time.',
-                    style: TextStyle(
-                      color: Colors.white54,
-                    ),
+                  // web profile bar
+                  const WebProfileBar(),
+                  // web search bar
+                  const WebSearchBar(),
+                  ContactList(
+                    onTap: () {
+                      setState(() {
+                        _hasClickedOnChat = !_hasClickedOnChat;
+                      });
+                    },
                   ),
                 ],
               ),
             ),
+          ),
+          // web screen
+          Container(
+            width: MediaQuery.of(context).size.width * 0.75,
+            decoration: BoxDecoration(
+              image: const DecorationImage(
+                image: AssetImage('assets/backgroundImage.png'),
+                fit: BoxFit.cover,
+              ),
+              border: Border(
+                left: BorderSide(color: Colors.blueGrey.shade800),
+              ),
+            ),
+            // alignment: Alignment.center,
+            child: !_hasClickedOnChat
+                ? const InactiveWebStateWidget()
+                : Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: const [
+                      // chat app bar
+                      ChatAppBar(),
+                      // chat list
+                      // message input
+                      Expanded(
+                        child: Center(
+                          child: Text('No Chat History!'),
+                        ),
+                      ),
+                    ],
+                  ),
           ),
         ],
       ),

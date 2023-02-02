@@ -75,11 +75,13 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout>
       ),
       body: TabBarView(
         controller: tabBarController,
-        children: const [
+        children: [
           // Center(child: Text('Contacts')),
-          ContactList(),
-          Center(child: Text('Status')),
-          Center(child: Text('Calls')),
+          ContactList(
+            onTap: () {},
+          ),
+          const Center(child: Text('Status')),
+          const Center(child: Text('Calls')),
         ],
       ),
       floatingActionButton: FloatingActionButton(

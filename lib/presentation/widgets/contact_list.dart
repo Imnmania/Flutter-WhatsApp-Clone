@@ -1,12 +1,13 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
-import 'package:whatsapp_clone/util/colors.dart';
 
 import '../../info.dart';
+import '../../util/colors.dart';
 
 class ContactList extends StatelessWidget {
-  const ContactList({super.key});
+  final VoidCallback onTap;
+  const ContactList({super.key, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +21,7 @@ class ContactList extends StatelessWidget {
               InkWell(
                 onTap: () {
                   log('Tapped ${item['name']}');
+                  onTap();
                 },
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
@@ -46,6 +48,7 @@ class ContactList extends StatelessWidget {
               ),
               const Divider(
                 indent: 95,
+                endIndent: 10,
                 color: dividerColor,
               ),
             ],
