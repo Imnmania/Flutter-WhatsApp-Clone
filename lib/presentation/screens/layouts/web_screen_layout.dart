@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:whatsapp_clone/presentation/widgets/contact_list.dart';
 
 import '../../widgets/web_profile_bar.dart';
+import '../../widgets/web_search_bar.dart';
 
 class WebScreenLayout extends StatelessWidget {
   const WebScreenLayout({super.key});
@@ -21,6 +22,7 @@ class WebScreenLayout extends StatelessWidget {
                   // web profile bar
                   WebProfileBar(),
                   // web search bar
+                  WebSearchBar(),
                   ContactList(),
                 ],
               ),

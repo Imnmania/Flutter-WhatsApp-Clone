@@ -22,12 +22,12 @@ class WebProfileBar extends StatelessWidget {
       ),
       child: Row(
         children: [
-          CircleAvatar(
+          const CircleAvatar(
             backgroundImage: NetworkImage(
                 'https://uploads.dailydot.com/2018/10/olli-the-polite-cat.jpg?auto=compress%2Cformat&ixlib=php-3.3.0'),
             radius: 20,
           ),
-          Spacer(),
+          const Spacer(),
           IconButton(
             onPressed: () {},
             icon: const Icon(
