@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../widgets/chat_app_bar.dart';
+import '../../widgets/chat_list.dart';
 import '../../widgets/contact_list.dart';
 import '../../widgets/inactive_web_state_widget.dart';
 import '../../widgets/web_profile_bar.dart';
@@ -105,11 +106,12 @@ class _WebScreenLayoutState extends State<WebScreenLayout> {
                       ChatAppBar(),
                       // chat list
                       // message input
-                      Expanded(
+                      ChatList(),
+                      /* Expanded(
                         child: Center(
                           child: Text('No Chat History!'),
                         ),
-                      ),
+                      ), */
                     ],
                   ),
           ),
