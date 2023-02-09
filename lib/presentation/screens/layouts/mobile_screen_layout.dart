@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_clone/presentation/screens/chat/mobile_chat_screen.dart';
 import '../../widgets/contact_list.dart';
 import '../../../util/colors.dart';
 
@@ -24,7 +25,6 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout>
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         title: const Text(
@@ -78,7 +78,11 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout>
         children: [
           // Center(child: Text('Contacts')),
           ContactList(
-            onTap: () {},
+            onTap: () {
+              Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const MobileChatScreen(),
+              ));
+            },
           ),
           const Center(child: Text('Status')),
           const Center(child: Text('Calls')),
@@ -87,7 +91,7 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout>
       floatingActionButton: FloatingActionButton(
         backgroundColor: tabColor,
         child: const Icon(
-          Icons.message_rounded,
+          Icons.comment_rounded,
           color: Colors.white,
         ),
         onPressed: () {},
