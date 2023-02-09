@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:whatsapp_clone/presentation/widgets/chat_list.dart';
-import 'package:whatsapp_clone/util/colors.dart';
+import '../../widgets/chat_list.dart';
+import '../../../util/colors.dart';
 
 import '../../../info.dart';
+import '../../widgets/mobile_chat_input_widget.dart';
 
 class MobileChatScreen extends StatelessWidget {
   const MobileChatScreen({super.key});
@@ -15,7 +14,6 @@ class MobileChatScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: appBarColor,
         title: Text(info[0]['name'].toString()),
-        centerTitle: true,
         actions: [
           IconButton(
             onPressed: () {},
@@ -32,51 +30,12 @@ class MobileChatScreen extends StatelessWidget {
         ],
       ),
       body: Column(
-        children: [
+        children: const [
           // chat list
-          const ChatList(),
+          ChatList(),
 
           // text input
-          Padding(
-            padding: const EdgeInsets.all(4.0),
-            child: TextField(
-              decoration: InputDecoration(
-                  filled: true,
-                  fillColor: mobileChatBoxColor,
-                  prefixIcon: const Icon(
-                    Icons.emoji_emotions,
-                    color: Colors.white54,
-                  ),
-                  suffixIcon: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: const [
-                        Icon(
-                          Icons.camera_alt,
-                          color: Colors.white54,
-                        ),
-                        SizedBox(width: 5),
-                        Icon(
-                          Icons.attach_file_rounded,
-                          color: Colors.white54,
-                        ),
-                        SizedBox(width: 5),
-                        Icon(
-                          Icons.money,
-                          color: Colors.white54,
-                        ),
-                      ],
-                    ),
-                  ),
-                  hintText: 'Type a message...',
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30),
-                    borderSide: BorderSide.none,
-                  ),
-                  contentPadding: const EdgeInsets.all(10)),
-            ),
-          ),
+          MobileChatInputWidget(),
         ],
       ),
     );

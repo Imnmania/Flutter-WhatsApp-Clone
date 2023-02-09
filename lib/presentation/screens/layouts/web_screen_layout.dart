@@ -4,6 +4,7 @@ import '../../widgets/chat_app_bar.dart';
 import '../../widgets/chat_list.dart';
 import '../../widgets/contact_list.dart';
 import '../../widgets/inactive_web_state_widget.dart';
+import '../../widgets/web_chat_input_widget.dart';
 import '../../widgets/web_profile_bar.dart';
 import '../../widgets/web_search_bar.dart';
 
@@ -105,13 +106,9 @@ class _WebScreenLayoutState extends State<WebScreenLayout> {
                       // chat app bar
                       ChatAppBar(),
                       // chat list
-                      // message input
                       ChatList(),
-                      /* Expanded(
-                        child: Center(
-                          child: Text('No Chat History!'),
-                        ),
-                      ), */
+                      // message input
+                      WebChatInputWidget(),
                     ],
                   ),
           ),
