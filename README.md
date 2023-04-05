@@ -20,7 +20,7 @@ ios       1:586723330577:ios:cb78b75d6d3b579b93ffb0
 
 #### Android Configuration:
 
-***[project_folder]/app/build.gradle***
+*[project_folder]/app/build.gradle*
 ```
 defaultConfig {
     ...
