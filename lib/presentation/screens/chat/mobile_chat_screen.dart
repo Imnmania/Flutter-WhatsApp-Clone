@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import '../../widgets/chat_list.dart';
 import '../../../util/colors.dart';
@@ -30,12 +32,15 @@ class MobileChatScreen extends StatelessWidget {
         ],
       ),
       body: Column(
-        children: const [
+        children: [
           // chat list
-          ChatList(),
-
+          const ChatList(),
           // text input
-          MobileChatInputWidget(),
+
+          Padding(
+            padding: EdgeInsets.only(bottom: Platform.isIOS ? 30 : 0),
+            child: const MobileChatInputWidget(),
+          ),
         ],
       ),
     );
