@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:whatsapp_clone/features/auth/screens/login_screen.dart';
 import '../chat/mobile_chat_screen.dart';
 import '../../widgets/contact_list.dart';
 import '../../../util/colors.dart';
@@ -94,7 +95,9 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout>
           Icons.comment_rounded,
           color: Colors.white,
         ),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.pushNamed(context, LoginScreen.routeName);
+        },
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:whatsapp_clone/common/router/router.dart';
 import 'package:whatsapp_clone/features/landing/screens/landing_screen.dart';
 import 'package:whatsapp_clone/firebase_options.dart';
 
@@ -28,8 +29,13 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: ThemeData.dark().copyWith(
             scaffoldBackgroundColor: backgroundColor,
-            // useMaterial3: true,
+            appBarTheme: const AppBarTheme(
+              elevation: 0,
+              backgroundColor: appBarColor,
+              centerTitle: true,
+            ),
           ),
+          onGenerateRoute: generateRoute,
           home: /*const ResponsiveLayout(
           mobileScreenLayout: MobileScreenLayout(),
           webScreenLayout: WebScreenLayout(),

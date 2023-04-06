@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:whatsapp_clone/features/auth/screens/login_screen.dart';
 import 'package:whatsapp_clone/util/colors.dart';
 
 import '../../../common/widgets/custom_button.dart';
@@ -45,7 +46,9 @@ class LandingScreen extends StatelessWidget {
               padding: const EdgeInsets.all(20.0),
               child: CustomButton(
                 title: 'AGREE AND CONTINUE',
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, LoginScreen.routeName);
+                },
               ),
             ),
           ],

@@ -7,7 +7,7 @@ class NotFoundScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Scaffold(
       body: Center(
-        child: Text('Screen Not Found'),
+        child: Text('Screen Doesn\'t exist!'),
       ),
     );
   }

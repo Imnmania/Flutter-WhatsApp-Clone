@@ -20,7 +20,10 @@ class CustomButton extends StatelessWidget {
       color: tabColor,
       padding: const EdgeInsets.all(20),
       onPressed: onTap,
-      child: Text(title),
+      child: Text(
+        title,
+        style: const TextStyle(color: Colors.black87),
+      ),
     );
   }
 }
