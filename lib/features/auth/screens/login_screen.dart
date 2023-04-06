@@ -80,7 +80,13 @@ class _LoginScreenState extends State<LoginScreen> {
               padding: const EdgeInsets.all(20.0),
               child: CustomButton(
                 title: 'NEXT',
-                onTap: () {},
+                onTap: () {
+                  if (country != null && _phoneController.text.isNotEmpty) {
+                    final enteredNumber =
+                        '${country?.phoneCode}${_phoneController.text}';
+                    debugPrint('Entered Number => $enteredNumber');
+                  }
+                },
               ),
             ),
           ],
