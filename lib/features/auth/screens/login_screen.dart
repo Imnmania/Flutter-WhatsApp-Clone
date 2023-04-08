@@ -1,18 +1,19 @@
 import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:whatsapp_clone/common/widgets/custom_button.dart';
 import 'package:whatsapp_clone/util/colors.dart';
 
-class LoginScreen extends StatefulWidget {
+class LoginScreen extends ConsumerStatefulWidget {
   static const routeName = '/login_screen';
   const LoginScreen({Key? key}) : super(key: key);
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  ConsumerState<LoginScreen> createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends ConsumerState<LoginScreen> {
   final _phoneController = TextEditingController();
   Country? country;
 
@@ -33,6 +34,14 @@ class _LoginScreenState extends State<LoginScreen> {
         });
       },
     );
+  }
+
+  void sendPhoneNumber() {
+    String phoneNumber = _phoneController.text.trim();
+
+    if (country != null && phoneNumber.isNotEmpty) {
+      // ref.watch(provider)
+    }
   }
 
   @override
@@ -68,6 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   width: 0.7.sw,
                   child: TextField(
                     controller: _phoneController,
+                    keyboardType: TextInputType.phone,
                     decoration: const InputDecoration(
                       hintText: 'phone number',
                     ),
@@ -80,13 +90,16 @@ class _LoginScreenState extends State<LoginScreen> {
               padding: const EdgeInsets.all(20.0),
               child: CustomButton(
                 title: 'NEXT',
-                onTap: () {
-                  if (country != null && _phoneController.text.isNotEmpty) {
-                    final enteredNumber =
-                        '${country?.phoneCode}${_phoneController.text}';
-                    debugPrint('Entered Number => $enteredNumber');
-                  }
-                },
+                onTap: country?.phoneCode == null
+                    ? null
+                    : () {
+                        if (country != null &&
+                            _phoneController.text.isNotEmpty) {
+                          final enteredNumber =
+                              '${country?.phoneCode}${_phoneController.text}';
+                          debugPrint('Entered Number => $enteredNumber');
+                        }
+                      },
               ),
             ),
           ],
