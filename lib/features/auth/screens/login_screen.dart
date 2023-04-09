@@ -2,7 +2,9 @@ import 'package:country_picker/country_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:whatsapp_clone/common/utils/snackbar_util.dart';
 import 'package:whatsapp_clone/common/widgets/custom_button.dart';
+import 'package:whatsapp_clone/features/auth/controller/auth_controller.dart';
 import 'package:whatsapp_clone/util/colors.dart';
 
 class LoginScreen extends ConsumerStatefulWidget {
@@ -40,7 +42,15 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
     String phoneNumber = _phoneController.text.trim();
 
     if (country != null && phoneNumber.isNotEmpty) {
-      // ref.watch(provider)
+      ref.read(authControllerProvider).signInWithPhone(
+            context: context,
+            phoneNumber: '+${country?.phoneCode}${_phoneController.text}',
+          );
+    } else {
+      showSnackbar(
+        context: context,
+        content: 'Fill all the fields!',
+      );
     }
   }
 
@@ -96,8 +106,9 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                         if (country != null &&
                             _phoneController.text.isNotEmpty) {
                           final enteredNumber =
-                              '${country?.phoneCode}${_phoneController.text}';
+                              '+${country?.phoneCode}${_phoneController.text}';
                           debugPrint('Entered Number => $enteredNumber');
+                          sendPhoneNumber();
                         }
                       },
               ),

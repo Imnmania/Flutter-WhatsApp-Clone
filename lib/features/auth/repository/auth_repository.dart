@@ -32,6 +32,7 @@ class AuthRepository {
           await auth.signInWithCredential(phoneAuthCredential);
         },
         verificationFailed: (error) {
+          debugPrint(error.message);
           throw Exception(error.message);
         },
         codeSent: (verificationId, forceResendingToken) async {

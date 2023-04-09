@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "586723330577-ejvt6196b735oq21r8uem0vouoq2vt49.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.niloybiswas.whatsapp_clone",
+            "certificate_hash": "44c51a8a4f7388c9f78f508664270a3484a21675"
+          }
+        },
+        {
           "client_id": "586723330577-u7pa65qmdubrivi1ka33f4eubi9saq58.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,6 +37,13 @@
             {
               "client_id": "586723330577-u7pa65qmdubrivi1ka33f4eubi9saq58.apps.googleusercontent.com",
               "client_type": 3
+            },
+            {
+              "client_id": "586723330577-ce4kvraqr34chvcco86s5tjs7o0q1rc1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.niloybiswas.whatsappClone"
+              }
             }
           ]
         }
